@@ -27,16 +27,16 @@ public class PhilosopherController {
     }
 
     @PostMapping("/post")
-    public Mono<Philosopher> create(@PathVariable Philosopher philosopher){
+    public Mono<Philosopher> create(@RequestBody Philosopher philosopher){
         return service.create(philosopher);
     }
 
-    @PostMapping("/put")
-    public Mono<Philosopher> update(@PathVariable Philosopher philosopher){
+    @PutMapping("/put/{id}")
+    public Mono<Philosopher> update(@PathVariable String id, @RequestBody Philosopher philosopher){
         return service.update(philosopher);
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public Mono<Void> delete(@PathVariable String id){
         return service.delete(id);
     }

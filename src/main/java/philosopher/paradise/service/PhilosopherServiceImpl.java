@@ -45,6 +45,6 @@ public class PhilosopherServiceImpl implements PhilosopherService {
     }
 
     public Mono<Void> delete(String id){
-        return repo.delete(getPhilosopher(id).block());
+        return repo.findById(id).flatMap(repo::delete).then(Mono.empty());
     }
 }
