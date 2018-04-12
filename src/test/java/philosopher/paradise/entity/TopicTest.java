@@ -31,13 +31,6 @@ public class TopicTest {
     }
 
     @Test
-    public void testNoArgsConstructor() {
-        Topic topicNoArgsConstructor = new Topic();
-        assertNull(topicNoArgsConstructor.getText());
-        assertNull(topicNoArgsConstructor.getQuotes());
-    }
-
-    @Test
     public void testTextArgConstructor() {
         Topic topicTextArgConstructor = new Topic(TEST_TEXT);
         assertNotNull(topicTextArgConstructor.getText());
