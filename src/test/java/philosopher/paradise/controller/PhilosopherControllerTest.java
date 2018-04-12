@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -42,6 +43,7 @@ public class PhilosopherControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     public void getPhilosophers() throws Exception{
         this.webTestClient.get().uri("/api/get")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -52,6 +54,7 @@ public class PhilosopherControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     public void getPhilosopher() throws Exception{
         this.webTestClient.get().uri("/api/get/{id}", protagoras.getId())
                 .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -62,6 +65,7 @@ public class PhilosopherControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     public void create() throws Exception{
         this.webTestClient.post().uri("/api/post")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -73,6 +77,7 @@ public class PhilosopherControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     public void update() throws Exception{
         this.webTestClient.put().uri("/api/put/{id}", protagoras.getId())
                 .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -84,6 +89,7 @@ public class PhilosopherControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "ADMIN")
     public void delete() throws Exception{
         this.webTestClient.delete().uri("/api/delete/{id}", protagoras.getId())
                 .exchange()
