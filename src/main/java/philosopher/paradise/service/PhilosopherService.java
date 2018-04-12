@@ -1,5 +1,6 @@
 package philosopher.paradise.service;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import philosopher.paradise.entity.Category;
 import philosopher.paradise.entity.Philosopher;

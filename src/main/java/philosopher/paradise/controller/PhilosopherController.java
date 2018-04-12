@@ -6,6 +6,8 @@ import philosopher.paradise.service.PhilosopherServiceImpl;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("/api/")
 public class PhilosopherController {
@@ -14,6 +16,11 @@ public class PhilosopherController {
 
     public PhilosopherController(PhilosopherServiceImpl service) {
         this.service = service;
+    }
+
+    @GetMapping({"", "/", "/login"})
+    public Mono<String> greetUser(Mono<Principal> principal){
+        return principal.map( p -> "Hello, " + p.getName());
     }
 
     @GetMapping("/get")
@@ -32,8 +39,8 @@ public class PhilosopherController {
     }
 
     @PutMapping("/put/{id}")
-    public Mono<Philosopher> update(@PathVariable String id, @RequestBody Philosopher philosopher){
-        return service.update(philosopher);
+    public Mono<Philosopher> update(@PathVariable String id, @RequestBody String description){
+        return service.update(id, description);
     }
 
     @DeleteMapping("/delete/{id}")
