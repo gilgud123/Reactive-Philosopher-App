@@ -43,6 +43,7 @@ public class PhilosopherServiceImpl implements PhilosopherService {
 
     @PreAuthorize("hasRole('USER')")
     public Mono<Philosopher> create(Philosopher philosopher){
+        philosopher.getQuotes().iterator().forEachRemaining(q -> q.setPhilosopherId(philosopher.getId()));
         return repo.save(philosopher);
     }
 

@@ -24,7 +24,7 @@ public class SecurityConfig {
 
         return http
                 .authorizeExchange()
-                .anyExchange()//.permitAll()
+                .anyExchange()
                 .authenticated()
                 .and()
                 .httpBasic()
