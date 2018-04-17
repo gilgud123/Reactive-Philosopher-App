@@ -1,15 +1,10 @@
 package philosopher.paradise.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,6 +18,8 @@ public class Philosopher implements Serializable{
     private List<Category> categories;
     private String description;
     private List<Quote> quotes;
+    private String modifiedBy;
+    private String modifiedOn;
 
     private Philosopher() {
         this.id = UUID.randomUUID().toString();

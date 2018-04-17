@@ -6,8 +6,6 @@ import philosopher.paradise.entity.Philosopher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Optional;
-
 public interface PhilosopherRepository extends ReactiveMongoRepository<Philosopher, String>{
     Flux<Philosopher> findAllByOrderByNameAsc();
 

@@ -9,7 +9,6 @@ import philosopher.paradise.entity.Topic;
 import philosopher.paradise.repository.PhilosopherRepository;
 import philosopher.paradise.repository.QuoteRepository;
 import philosopher.paradise.repository.TopicRepository;
-import philosopher.paradise.service.PhilosopherServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,32 +30,32 @@ public class Bootstrap implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         //creating topics
-        Topic truth = Topic.builder().text("truth").build();
-        Topic cognition = Topic.builder().text("cognition").build();
-        Topic morals = Topic.builder().text("morals").build();
-        Topic religion = Topic.builder().text("religion").build();
-        Topic politics = Topic.builder().text("politics").build();
-        Topic human_condition = Topic.builder().text("human condition").build();
-        Topic happiness = Topic.builder().text("happiness").build();
-        Topic perception = Topic.builder().text("perception").build();
-        Topic causality = Topic.builder().text("causality").build();
-        Topic teleology = Topic.builder().text("teleology").build();
+        Topic truth = new Topic("truth");
+        Topic cognition = new Topic("cognition");
+        Topic morals = new Topic("morals");
+        Topic religion = new Topic("religion");
+        Topic politics = new Topic("politics");
+        Topic human_condition = new Topic("human condition");
+        Topic happiness = new Topic("happiness");
+        Topic perception = new Topic("perception");
+        Topic causality = new Topic("causality");
+        Topic teleology = new Topic("teleology");
 
         //creating quotes
-        Quote q1 = Quote.builder().text("Happiness is the highest good.").build();
-        Quote q2 = Quote.builder().text("Plato is a friend but Truth is a better friend.").build();
-        Quote q3 = Quote.builder().text("The only thing I know is that I know nothing.").build();
-        Quote q4 = Quote.builder().text("Man is the measure of all things.").build();
-        Quote q5 = Quote.builder().text("We are too weak to discover the truth by reason alone.").build();
-        Quote q6 = Quote.builder().text("God is dead! He remains dead! And we have killed him.").build();
-        Quote q7 = Quote.builder().text("You can discover more about a person in an hour of play than in a year of conversation.").build();
-        Quote q8 = Quote.builder().text("Happiness is not an ideal of reason but of imagination.").build();
-        Quote q9 = Quote.builder().text("He who thinks great thoughts, often makes great errors.").build();
-        Quote q10 = Quote.builder().text("Cogito ergo sum.").build();
-        Quote q11 = Quote.builder().text("I can control my passions and emotions if I can understand their nature.").build();
-        Quote q12 = Quote.builder().text("Everything that exists is born for no reason, carries on living through weakness, and dies by accident.").build();
-        Quote q13 = Quote.builder().text("Philosophers have hitherto only interpreted the world in various ways; the point, however, is to change it.").build();
-        Quote q14 = Quote.builder().text("Religion is the sign of the oppressed ... it is the opium of the people.").build();
+        Quote q1 = new Quote("Happiness is the highest good.");
+        Quote q2 = new Quote("Plato is a friend but Truth is a better friend.");
+        Quote q3 = new Quote("The only thing I know is that I know nothing.");
+        Quote q4 = new Quote("Man is the measure of all things.");
+        Quote q5 = new Quote("We are too weak to discover the truth by reason alone.");
+        Quote q6 = new Quote("God is dead! He remains dead! And we have killed him.");
+        Quote q7 = new Quote("You can discover more about a person in an hour of play than in a year of conversation.");
+        Quote q8 = new Quote("Happiness is not an ideal of reason but of imagination.");
+        Quote q9 = new Quote("He who thinks great thoughts, often makes great errors.");
+        Quote q10 = new Quote("Cogito ergo sum.");
+        Quote q11 = new Quote("I can control my passions and emotions if I can understand their nature.");
+        Quote q12 = new Quote("Everything that exists is born for no reason, carries on living through weakness, and dies by accident.");
+        Quote q13 = new Quote("Philosophers have hitherto only interpreted the world in various ways; the point, however, is to change it.");
+        Quote q14 = new Quote("Religion is the sign of the oppressed ... it is the opium of the people.");
 
         //Linking topics to quotes
         List<Topic> q1Topics = new ArrayList<>();

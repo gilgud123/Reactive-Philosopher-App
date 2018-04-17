@@ -20,7 +20,7 @@ public class TopicTest {
     @Before
     public void setUp() throws Exception {
         quoteList.add(quote);
-        topic = Topic.builder().id(TEST_ID).text(TEST_TEXT).quotes(quoteList).build();
+        topic = new Topic(TEST_ID, TEST_TEXT, quoteList);
     }
 
     @Test

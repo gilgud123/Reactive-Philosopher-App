@@ -22,7 +22,7 @@ public class QuoteTest {
     @Before
     public void setUp() throws Exception {
         topics.add(topic);
-        quote = Quote.builder().id(TEST_ID).text(TEST_TEXT).topics(topics).philosopherId(TEST_PHILOSOPHER_ID).build();
+        quote = new Quote(TEST_TEXT, topics, TEST_PHILOSOPHER_ID);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class QuoteTest {
 
     @Test
     public void testEqualsAndHashCode() {
-        anotherQuote = new Quote("another id", TEST_TEXT, topics, TEST_PHILOSOPHER_ID);
+        anotherQuote = new Quote("another id", TEST_TEXT, topics, "dummy user", "dummy date", TEST_PHILOSOPHER_ID);
 
         assertNotEquals(quote, anotherQuote);
         assertNotEquals(quote.hashCode(), anotherQuote.hashCode());

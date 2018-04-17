@@ -8,6 +8,8 @@ import philosopher.paradise.repository.PhilosopherRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+
 @Service
 public class PhilosopherServiceImpl implements PhilosopherService {
 
@@ -48,9 +50,11 @@ public class PhilosopherServiceImpl implements PhilosopherService {
     }
 
     @PreAuthorize("hasRole('USER')")
-    public Mono<Philosopher> update(String id, String description){
+    public Mono<Philosopher> updateDescription(String id, String username, String description){
         return repo.findById(id).flatMap(p -> {
             p.setDescription(description);
+            p.setModifiedBy(username);
+            p.setModifiedOn(LocalDateTime.now().toString());
             return repo.save(p);
         });
     }

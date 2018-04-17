@@ -8,7 +8,7 @@ public interface QuoteService {
 
     Flux<Quote> getAllQuotes();
 
-    Flux<Quote> getQuoteByTopic(Topic topic);
+    Flux<Quote> getQuotesByTopic(Topic topic);
 
     Flux<Quote> getQuoteByPhilosopherId(String id);
 }

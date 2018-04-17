@@ -9,14 +9,12 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Document(collection = "topics")
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Topic implements Serializable {
 
     @Id
@@ -26,7 +24,17 @@ public class Topic implements Serializable {
     @DBRef
     private List<Quote> quotes;
 
+    public Topic(){
+        this.id = UUID.randomUUID().toString();
+    }
+
     public Topic(String text){
+        this();
         this.text = text;
+    }
+
+    public Topic(String text, List<Quote> quotes) {
+        this.text = text;
+        this.quotes = quotes;
     }
 }
