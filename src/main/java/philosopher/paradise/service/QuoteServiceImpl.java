@@ -43,20 +43,16 @@ public class QuoteServiceImpl implements QuoteService {
     }
 
     @PreAuthorize("hasRole('USER')")
-    public Mono<Quote> addQuote(String username, Quote quote){
-        quote.setCreatedBy(username);
-        quote.setCreatedOn(LocalDateTime.now().toString());
+    public Mono<Quote> addQuote(Quote quote){
         return repo.save(quote);
     }
 
     @PreAuthorize("hasRole('USER')")
     public Mono<Quote> updateQuote(String id, Quote quote){
         return repo.findById(id).flatMap(q ->{
-            q.getTopics().iterator().forEachRemaining(quote.getTopics()::add);
+            quote.getTopics().iterator().forEachRemaining(q.getTopics()::add);
             q.setPhilosopherId(quote.getPhilosopherId());
             q.setText(quote.getText());
-            q.setCreatedOn(quote.getCreatedOn());
-            q.setCreatedBy(quote.getCreatedBy());
             return repo.save(q);
         });
     }

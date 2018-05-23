@@ -1,33 +1,27 @@
 package philosopher.paradise.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import philosopher.paradise.audit.AuditEntity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Document(collection = "quotes")
-@AllArgsConstructor
-public class Quote implements Serializable {
+public class Quote extends AuditEntity implements Serializable {
 
-    @Id
-    private String id;
     private String text;
     private List<Topic> topics;
-    private String createdBy;
-    private String createdOn;
 
     private String philosopherId;
 
     public Quote(){
-        this.id = UUID.randomUUID().toString();
+        super();
     }
 
     public Quote(String text) {

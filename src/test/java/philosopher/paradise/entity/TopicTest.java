@@ -20,7 +20,7 @@ public class TopicTest {
     @Before
     public void setUp() throws Exception {
         quoteList.add(quote);
-        topic = new Topic(TEST_ID, TEST_TEXT, quoteList);
+        topic = new Topic(TEST_TEXT, quoteList);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class TopicTest {
 
     @Test
     public void testEqualsAndHashCode() {
-        Topic anotherTopic = new Topic(TEST_ID, TEST_QUOTE_TEXT, quoteList);
+        Topic anotherTopic = new Topic(TEST_QUOTE_TEXT, quoteList);
         assertNotEquals(topic.hashCode(), anotherTopic.hashCode());
         assertNotEquals(topic, anotherTopic);
     }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import philosopher.paradise.audit.AuditEntity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,22 +15,19 @@ import java.util.UUID;
 
 @Data
 @Document(collection = "topics")
-@AllArgsConstructor
-public class Topic implements Serializable {
+public class Topic extends AuditEntity implements Serializable {
 
-    @Id
-    private String id;
     private String text;
 
     @DBRef
     private List<Quote> quotes;
 
     public Topic(){
-        this.id = UUID.randomUUID().toString();
+        super();
     }
 
     public Topic(String text){
-        this();
+        super();
         this.text = text;
     }
 

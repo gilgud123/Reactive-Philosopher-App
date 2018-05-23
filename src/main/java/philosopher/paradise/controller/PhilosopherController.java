@@ -74,13 +74,13 @@ public class PhilosopherController {
     }
 
     @PostMapping("/quote/post")
-    public Mono<Quote> addQuote(@AuthenticationPrincipal UserDetails user, @RequestBody Quote quote){
-        return qService.addQuote(user.getUsername(), quote);
+    public Mono<Quote> addQuote(@RequestBody Quote quote){
+        return qService.addQuote(quote);
     }
 
     @PutMapping("/put/{id}")
-    public Mono<Philosopher> update(@PathVariable String id, @AuthenticationPrincipal UserDetails user, @RequestBody String description){
-        return service.updateDescription(id, user.getUsername(), description);
+    public Mono<Philosopher> update(@PathVariable String id, @RequestBody String description){
+        return service.updateDescription(id, description);
     }
 
     @PutMapping("/quote/put/{id}")

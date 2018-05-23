@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Service
 public class PhilosopherServiceImpl implements PhilosopherService {
 
-    private final PhilosopherRepository repo;
+       private final PhilosopherRepository repo;
 
     public PhilosopherServiceImpl(PhilosopherRepository repo) {
         this.repo = repo;
@@ -50,11 +50,9 @@ public class PhilosopherServiceImpl implements PhilosopherService {
     }
 
     @PreAuthorize("hasRole('USER')")
-    public Mono<Philosopher> updateDescription(String id, String username, String description){
+    public Mono<Philosopher> updateDescription(String id, String description){
         return repo.findById(id).flatMap(p -> {
             p.setDescription(description);
-            p.setModifiedBy(username);
-            p.setModifiedOn(LocalDateTime.now().toString());
             return repo.save(p);
         });
     }
